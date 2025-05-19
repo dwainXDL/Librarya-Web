@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'Riviera Nights';
+  src: url('fonts/RivieraNights-Regular.woff2') format('woff2'),
+       url('fonts/RivieraNights-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Riviera Nights';
+  src: url('fonts/RivieraNights-Bold.woff2') format('woff2'),
+       url('fonts/RivieraNights-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  font-family: 'Cinzel Decorative', serif;
+  background: url('https://images.unsplash.com/photo-1463143296037-46790ff95a7e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+              center/cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  padding: 1rem 0;
+  z-index: 10;
+}
+
+.page-header img {
+  height: 90px;
+}
+
+.form-container {
+  background: rgba(240, 240, 240, 0.6);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.libraryaT {
+  font-size: 2.75rem;
+  color: #5a3e36;
+  margin-bottom: 0.25rem;
+}
+.registerSub {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  transition: none;
+}
+.input-group:focus-within {
+  background: rgba(255, 255, 255, 0.9);
+}
+.input-group-text {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #777;
+  padding: 0.5rem;
+}
+.input-group-text.prefix {
+  font-size: 0.9rem;
+}
+.form-control {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  text-transform: none;
+  font-family: 'Riviera Nights', serif;
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+.form-control::placeholder {
+  color: #aaa;
+}
+
+#togglePwd {
+  border: none;
+  background: transparent;
+  color: #777;
+  padding: 0 0.75rem;
+}
+
+.btn-submit {
+  margin-top: 0.5rem;
+  background: #5a3e36;
+  border: 2px solid #5a3e36;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 50px;
+  width: 100%;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.btn-submit:hover:not(:disabled) {
+  background: #fff;
+  color: #5a3e36;
+  border-color: #fff;
+  animation: borderGlow 1.2s ease-in-out infinite alternate;
+}
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes borderGlow {
+  from {
+    box-shadow: 0 0 5px rgba(255,255,255,0.2), 0 0 10px rgba(255,255,255,0.1);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 25px rgba(255,255,255,0.5);
+  }
+}
+
+.login-only {
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+}
+.login-only a {
+  color: #5a3e36;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-only a:hover {
+  text-decoration: underline;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: rgba(175,175,175, 0.75);
+  font-size: 0.9rem;
+  font-family: 'Cinzel Decorative', serif;
+  z-index: 10;
+}
+
+@keyframes fadeInUp    { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown  { from { opacity: 0; transform: translateY(-20px);} to { opacity:1; transform: translateY(0);} }
+@keyframes fadeIn      { from { opacity: 0; } to { opacity: 1; } }
+.animate__fadeInUp   { animation-name: fadeInUp; }
+.animate__fadeInDown { animation-name: fadeInDown; }
+.animate__fadeIn     { animation-name: fadeIn; }
+
+.page-nav {
+  position: absolute;
+  top: 120px;                       
+  left: 80;
+  width: 80%;
+  height: 0;                        
+  border-bottom: 2px solid rgba(175,175,175, 0.75);
+  z-index: 9;
+}
+
+.page-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(175,175,175, 0.75);
+}
+
+.error-msg {
+  color: #9e2a1d;         
+  margin-top: 1.7rem;
+  font-size: 0.95rem;
+  font-family: 'Cinzel Decorative', serif;
+  text-align: center;
+}
