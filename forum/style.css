@@ -1,0 +1,441 @@
+/* Full-page background */
+
+/* Base */
+body {
+  background: transparent; color: #212121;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0; display: flex; flex-direction: column; min-height: 100vh;
+}
+
+/* Header */
+.logo {margin-bottom: .3rem; height: 90px}
+
+/* Search */
+.search-container { position: relative; z-index: 10; }
+.search-toggle {
+  font-size: 1.8rem; background: none; border: none;
+  color: #212121; cursor: pointer; transition: transform .2s;
+}
+.search-toggle:hover { transform: scale(1.2); }
+.search-box {
+  display: none;
+  position: absolute; top: 60px; left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: 80%; max-width: 500px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s;
+}
+.search-container.active .search-box {
+  display: block; opacity: 1; pointer-events: auto;
+}
+.search-box .form-control {
+  border-radius: 50px; background: #f1f1f1; border: none;
+  padding: .8rem 1.5rem;
+}
+.search-box .btn-outline-dark {
+  border-radius: 50px; padding: .8rem 1.5rem;
+}
+
+/* Layout */
+.forum-split { flex: 1; }
+.forum-left, .forum-right { padding-top: 1rem; }
+@media(min-width:992px){
+  .forum-left { width:33.333%; float:left; }
+  .forum-right{ width:66.667%; float:right; }
+}
+
+/* Categories */
+#categoryList { animation: fadeInLeft .5s; }
+.category-btn {
+  width: 100%; text-align: left;
+  padding: 1.4rem 2rem; background: #000; color: #fff;
+  border: 2px solid #ccc; border-radius: 4rem;
+  margin-bottom: 1rem; font-size: 1.25rem;
+  position: relative;
+}
+.category-btn .desc {
+  display: block; font-size: .9rem; color: #aaa; margin-top: .4rem;
+}
+.category-btn .count {
+  position: absolute; top: 50%; right: 1.5rem;
+  transform: translateY(-50%); background: #fff; color: #000;
+  padding: .3rem .7rem; border-radius: 1rem; font-size: 1rem;
+}
+.category-btn:hover, .category-btn.active {
+  background: #222; border-color: #999;
+}
+
+/* Threads */
+#threadList { animation: fadeInRight .5s; }
+.thread-list {
+  max-height: 60vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.question-card {
+  border: 1px solid #ddd; border-radius: .6rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.question-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-title a { color: #212121; font-weight: 500; }
+.btn-outline-primary {
+  border-radius: 4rem; border: 2px solid #212121; color: #212121;
+}
+.btn-outline-primary:hover {
+  background: #212121; color: #fff;
+}
+
+/* Ask panel */
+.ask-card {
+  background: #fff; border: 1px solid #ddd; border-radius: 1rem;
+  margin-bottom: 2rem;
+  margin: 0 auto 3rem
+}
+.ask-card h4 { color: #212121; }
+.ask-cat-btn {
+  padding: .6rem 1.2rem; border: 2px solid #212121;
+  border-radius: 2rem; background: #f1f1f1; color: #212121;
+  font-size: 1rem; transition: background .2s, color .2s;
+}
+.ask-cat-btn.active,
+.ask-cat-btn:hover {
+  background: #212121; color: #fff;
+}
+.ask-card .form-control, .ask-card .form-select {
+  border: 1px solid #ccc; border-radius: 2rem;
+  padding: 1rem 1.5rem; margin-bottom: 1.5rem;
+}
+.ask-card .btn-lg {
+  border-radius: 2rem; background: #000; color: #fff;
+}
+.ask-card .btn-lg:hover {
+  background: #444;
+}
+
+/* Footer */
+footer {
+  margin-top: auto; padding: 1rem 0;
+  text-align: center; font-family: 'Segoe UI', sans-serif;
+  font-size: .95rem;
+  font-family: 'Cinzel Decorative', serif !important;
+  color: #ccc;
+}
+
+/* Animations */
+@keyframes fadeInLeft { from{opacity:0;transform:translateX(-20px);} to{opacity:1;} }
+@keyframes fadeInRight{ from{opacity:0;transform:translateX(20px);} to{opacity:1;} }
+
+
+
+.page-nav {
+  width: 80%;
+  height: 3px;                 /* same thickness */
+  background-color: #ccc;
+  opacity: 1;                 /* same transparency */
+  margin: 0 auto;              /* center horizontally */;           /* same vertical offset as Books */
+  margin-top: -0.7rem;
+  box-shadow: none;
+}
+
+/* ==== Home page user-icon + dropdown styling ==== */
+.user-container {
+  position: relative;
+}
+
+.user-icon {
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  z-index: 1000;
+  min-width: 140px;
+}
+
+.user-dropdown.open {
+  display: block;
+}
+
+.user-dropdown .dropdown-item {
+  padding: 0.6rem 1rem;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background: #f0f0f0;
+}
+.user-icon {
+  font-size: 1.9rem !important;                /* down from ~1.8rem */
+}
+
+/* 2. Black, capsule-shaped dropdown */
+.user-dropdown {
+  background-color: #000 !important;
+  border: none !important;                      /* remove the light border */
+  border-radius: 30px !important;               /* full pill shape */
+  min-width: 160px;                              /* adjust as needed */
+  padding: 0.5rem 0 !important;
+  font-family: 'Cinzel Decorative', serif !important;
+  top: 130%;
+}
+
+/* 3. Centered, white text inside each item */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  color: #fff !important;
+  font-size: 1rem;
+  padding: 0.6rem 1rem !important;
+}
+
+/* 4. Hover state (lighter black) */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;              /* dark hover */
+  border-radius: 50px !important;
+}
+
+.user-dropdown .dropdown-item {
+  display: inline-flex !important;          /* inline‐flex for both <div> and <a> */
+  justify-content: center !important;       /* center text horizontally */
+  align-items: center !important;           /* center text vertically */
+  width: auto !important;                   /* shrink to content */
+  margin: 0.25rem auto !important;          /* small vertical gap, horizontally auto‐centered */
+  padding: 0.6rem 1.25rem !important;       /* uniform padding for both */
+  text-align: center !important; 
+  border-radius: 50px !important;            /* ensure text is centered */
+}
+
+/* 1. Make the dropdown container size itself to its content */
+.user-dropdown {
+  width: max-content;          /* shrink‐to‐fit the widest item */
+  min-width: 130px; 
+  height: max-content;           /* or whatever minimum you like */
+}
+
+/* 2. Each item full-width, block, no individual rounding */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0.6rem 1.25rem !important;
+  text-align: center !important;
+  border-radius: 0 !important;  /* remove per-item rounding */
+}
+
+/* 3. Round only the top and bottom corners of the whole capsule */
+.user-dropdown {
+  border-radius: 20px !important;
+  overflow: hidden;            /* clip items to that radius */
+}
+
+/* 4. Hover state spans full width, clipped by container’s radius */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right .user-container {
+  margin-left: auto !important;
+}
+
+.site-header .navbar {
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+/* 2. Brand/logo keeps its own width so it truly centres */
+.brand {
+  flex: 0 0 auto;   /* don’t grow or shrink */
+}
+
+/* 3. nav-left is invisible but takes up same width as nav-right */
+.nav-left {
+  flex: 0 0 auto;
+  width: auto;      /* you can set this to the width of your nav-right if you want perfect symmetry */
+}
+
+/* 4. Push the user & search to the right */
+.nav-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* 5. Adjust the icons */
+.user-icon,
+.search-icon {
+  font-size: 1.6rem;    /* tweak to your liking */
+  cursor: pointer;
+  display: inline-block;    /* or whatever it currently is */
+  position: relative;        /* allow you to nudge it */
+  left: -10px;            /* move it 10px to the left */
+  top: 5px;
+}
+
+/* 6. Divider under the header */
+.nav-divider {
+  border: none;
+  height: 2px;
+  background: #ccc;
+  opacity: 0.4;
+  margin: 0 auto;
+  width: 80%
+}
+
+/* Make the navbar logo smaller */
+.navbar .brand .nav-logo {
+  height: 90px !important;  /* change to whatever you like */
+  width: auto !important;   /* keep aspect ratio */
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.user-dropdown {
+  margin-top: 0.1rem;  /* push it down a bit */
+  margin-left: -4.7rem; /* shift slightly left/right as desired */
+}
+
+.search-container.active .search-toggle {
+  visibility: hidden;  /* or display: none; */
+  /* if you prefer z-index trick:
+  z-index: -1;
+  */
+  transition-delay: 0s; /* hide immediately */
+}
+
+.search-container .search-box {
+  top: 40px;
+}
+
+/* === replace your existing .search-box rules with: === */
+.search-box {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: 80%;
+  max-width: 500px;
+  
+  /* new flex layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+.search-container.active .search-box {
+  display: flex;   /* show as flex instead of block */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* kill the default bottom margin on the input */
+.search-box .form-control {
+  margin-bottom: 0 !important;
+  flex: 1;   /* let it stretch to fill available space */
+}
+
+/* optional: make the “Go” button hug its contents */
+#searchGo {
+  white-space: nowrap;
+}
+
+.category-btn {
+  /* … */
+  font-size: 1.5rem;
+}
+
+.cat-label {
+  position: relative;
+  top: -2px;    /* fine-tune this value */
+}
+
+.category-btn .count {
+  background: transparent !important;  /* kill the colored circle */
+  box-shadow: none !important;        /* if you have any shadows */
+  border: none !important;            /* remove any borders */
+  border-radius: 0 !important;        /* square corners */
+  color: #fff !important;             /* white text */
+  padding: 0 !important;              /* no extra padding */
+  width: auto !important;             /* let it size to the number */
+  height: auto !important;
+  font-weight: bold;      
+  font-size: 1.5rem;  
+  font-family: 'Cinzel Decorative', serif;          /* optional, makes it stand out */
+}
+
+.ask-card {
+  margin-top: 3rem;
+  max-width: 900px;      /* limit how wide it grows */
+  margin: 0 auto 2rem;   /* center it, keep your bottom spacing */
+  padding: 3rem;         /* instead of the default p-5 (~3rem), you could try 4rem */
+}
+
+.category-btn {
+  margin-left: 130px;  /* increase as needed */
+}
+
+.category-btn:hover,
+.category-btn:focus,
+.category-btn.active {
+  background-color: #ccc;  /* example highlight color */
+  /* add this: */
+  color: #fff !important;      /* force the text to white */
+}
+
+#backBtn {
+  color: #000 !important;
+  font-size: 2rem;
+  margin-left: 17rem;
+}
+
+#threadList:not(.d-none) {
+  margin-left: 17rem;  /* or whatever amount you prefer */
+}
+
+#threadList {
+  margin-top: 0rem;
+  max-height: 500px;        /* or use vh: e.g. 60vh */
+  overflow-y: auto;         /* enable vertical scroll */
+  padding-right: 0.5rem;    /* avoid text hiding behind scrollbar */
+}
+
+/* Optional: style the scrollbar (WebKit browsers) */
+#threadList::-webkit-scrollbar {
+  width: 8px;
+}
+#threadList::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+#askCategories > .ask-cat-btn:first-child {
+  margin-left: 5rem;  /* adjust as needed */
+}

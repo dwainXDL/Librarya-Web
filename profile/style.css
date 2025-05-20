@@ -1,0 +1,415 @@
+/* style.css */
+
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fff;
+}
+
+/* === NAVBAR & DIVIDER === */
+.site-header .navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: transparent;
+  box-shadow: none;
+  z-index: 1000;
+}
+.site-header .brand {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.brand .nav-logo {
+  height: 90px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+.nav-divider {
+  width: 80%;
+  height: 2px;
+  background-color: #ccc;
+  border: none;
+  margin: 7rem auto 0 auto;  /* pushes it down 20px, centers it */
+}
+
+/* === SECTION SPACER === */
+.section-spacer {
+  height: 325px;  /* keeps page content below navbar+divider */
+  background: #fff;
+}
+
+/* === PROFILE INFO === */
+.text-center .container h1 {
+  margin-bottom: .5rem;
+  font-family: 'Cinzel Decorative', serif;
+}
+.tagline {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #444;
+  text-align: center;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+/* === CAROUSEL === */
+.latest-news-section {
+  padding: 2rem 0;
+}
+.custom-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.book-carousel {
+  position: relative;
+  margin: 10px auto;
+  max-width: 1000px;
+  padding: 0 10px;
+}
+.book-carousel .slick-slide {
+  opacity: .6;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.book-carousel .slick-center {
+  transform: scale(1.1);
+  opacity: 1;
+  z-index: 2;
+}
+.book-carousel img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform .3s ease;
+}
+.book-carousel img:hover {
+  transform: scale(1.05);
+}
+/* hide titles except center slide */
+.book-carousel h4.book-title {
+  display: none !important;
+}
+.book-carousel .slick-center h4.book-title {
+  display: block !important;
+  margin-top: 10px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+}
+/* dots */
+.book-carousel .slick-dots {
+  position: absolute !important;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.book-carousel .slick-dots li button:before {
+  font-size: 10px;
+  color: #aaa;
+  opacity: .6;
+}
+.book-carousel .slick-dots li.slick-active button:before {
+  color: #000;
+  opacity: 1;
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #fff;
+  padding: 35px 20px;
+  color: #ccc;
+  font-family: 'Cinzel Decorative', serif;
+}
+.footer-links a,
+.footer-social a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: .95em;
+}
+.footer-links a:hover,
+.footer-social a:hover {
+  color: #000;
+}
+footer p {
+  font-size: .9em;
+  color: #666;
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+/* === OVERLAY MENU === */
+.menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,.85), rgba(0,0,0,.3));
+  backdrop-filter: blur(10px);
+  transform: translateX(-100%);
+  transition: transform .4s ease;
+  z-index: 1100;
+  padding: 60px 30px;
+  box-shadow: 4px 0 10px rgba(0,0,0,.2);
+}
+.menu-overlay.open {
+  transform: translateX(0);
+}
+.close-btn {
+  position: absolute;
+  top: 40px; left: 45px;
+  font-size: 1.5rem;
+  color: #fff !important;
+  background: none;
+  border: none;
+  outline: none;
+}
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 80px 0 0 20px;
+}
+.menu-links li {
+  margin: 25px 0;
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideInLeft .6s forwards ease;
+}
+.menu-overlay.open .menu-links li:nth-child(1) { animation-delay: .2s; }
+.menu-overlay.open .menu-links li:nth-child(2) { animation-delay: .4s; }
+.menu-overlay.open .menu-links li:nth-child(3) { animation-delay: .6s; }
+.menu-overlay.open .menu-links li:nth-child(4) { animation-delay: .8s; }
+.menu-overlay.open .menu-links li:nth-child(5) { animation-delay: 1s; }
+.menu-overlay.open .menu-links li:nth-child(6) { animation-delay: 1.2s; }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.menu-links a {
+  display: inline-block;
+  font-size: 1.5em;
+  color: #eee;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: transform .3s;
+}
+.menu-links a:hover {
+  transform: translateX(8px) translateY(-2px) scale(1.05);
+}
+
+/* ==== Home page user-icon + dropdown styling ==== */
+.user-container {
+  position: relative;
+  right: 40;
+}
+
+.user-icon {
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  z-index: 1000;
+  min-width: 140px;
+}
+
+.user-dropdown.open {
+  display: block;
+}
+
+.user-dropdown .dropdown-item {
+  padding: 0.6rem 1rem;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background: #f0f0f0;
+}
+.user-icon {
+  font-size: 1.9rem !important;                /* down from ~1.8rem */
+}
+
+/* 2. Black, capsule-shaped dropdown */
+.user-dropdown {
+  background-color: #000 !important;
+  border: none !important;                      /* remove the light border */
+  border-radius: 30px !important;               /* full pill shape */
+  min-width: 160px;                              /* adjust as needed */
+  padding: 0.5rem 0 !important;
+  font-family: 'Cinzel Decorative', serif !important;
+  top: 130%;
+}
+
+/* 3. Centered, white text inside each item */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  color: #fff !important;
+  font-size: 1rem;
+  padding: 0.6rem 1rem !important;
+}
+
+/* 4. Hover state (lighter black) */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;              /* dark hover */
+  border-radius: 50px !important;
+}
+
+.nav-right .user-container {  /* increase this value to move it further right */
+  margin-right: 50px;
+}
+
+.user-dropdown .dropdown-item {
+  display: inline-flex !important;          /* inline‐flex for both <div> and <a> */
+  justify-content: center !important;       /* center text horizontally */
+  align-items: center !important;           /* center text vertically */
+  width: auto !important;                   /* shrink to content */
+  margin: 0.25rem auto !important;          /* small vertical gap, horizontally auto‐centered */
+  padding: 0.6rem 1.25rem !important;       /* uniform padding for both */
+  text-align: center !important; 
+  border-radius: 50px !important;            /* ensure text is centered */
+}
+
+/* 1. Make the dropdown container size itself to its content */
+.user-dropdown {
+  width: max-content;          /* shrink‐to‐fit the widest item */
+  min-width: 130px; 
+  height: 105px;           /* or whatever minimum you like */
+}
+
+/* 2. Each item full-width, block, no individual rounding */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0.6rem 1.25rem !important;
+  text-align: center !important;
+  border-radius: 0 !important;  /* remove per-item rounding */
+}
+
+/* 3. Round only the top and bottom corners of the whole capsule */
+.user-dropdown {
+  border-radius: 20px !important;
+  overflow: hidden;            /* clip items to that radius */
+}
+
+/* 4. Hover state spans full width, clipped by container’s radius */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;
+}
+
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff;       /* or transparent, if you prefer */
+}
+
+header.site-header .navbar {
+  padding-top: 60px;    /* increases space above logo */
+  padding-bottom: 10px; /* maintain some bottom padding */
+}
+
+.nav-right .user-icon {
+  position: relative;      /* make sure it can be offset */
+  top: -20px;               /* negative moves it up 6px; tweak as needed */
+}
+
+.nav-right .user-container {
+  position: relative;
+}
+
+/* Nudge the dropdown up under the icon */
+.nav-right .user-container .user-dropdown {
+  position: absolute;      /* ensure it’s absolute to the container */
+  top: 36px !important;    /* adjust this smaller to move it up */
+  right: 0;                /* align its right edge with the container */
+}
+
+ .tagline {
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif !important;
+  }
+
+  /* Nav divider (80% centered, 2px #ccc, slightly lower) */
+.container {
+  margin-top: -10rem;
+}
+
+#history {
+  /* no margin specified before */
+  margin-top: -130px;   /* pulls history 20px upward */
+ }
+
+.book-carousel .slick-dots {
+  display: none !important;
+}
+#history h2 {
+  font-family: 'Cinzel Decorative', serif !important;
+}
+
+.book-carousel .slick-slide {
+  /* make each slide auto-width and give horizontal gutters */
+  flex: 0 0 auto !important;
+  width: 220px !important;    /* pick a fixed cover width */
+  height: 350px;
+  margin: 0 12px;             /* 12px space on each side */
+  margin-left: 4.5rem;
+}
+
+.book-carousel .slick-list {
+  margin: 0 -12px;
+}
+
+.custom-carousel-wrapper .book-slide-wrapper h4.book-title {
+  display: none !important;
+}
+
+.book-carousel h4.book-title,
+.book-carousel .slick-dots {
+  display: none !important;
+}
+.book-carousel .slick-list {
+  margin: 0 -10px;            /* compensate for slide gutters */
+  overflow: hidden;           /* clip anything outside */
+}
+
+

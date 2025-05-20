@@ -1,3 +1,8 @@
+<?php
+// loginForm.php
+// $error is set by login.php before inclusion
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,9 @@
 
 <body class="animate__animated animate__fadeIn">
   <header class="page-header animate__animated animate__fadeInDown">
+    <a href="../pages/home.php">
     <img src="https://i.imgur.com/d8X48fK.png" alt="Librarya Logo">
+    </a>
   </header>
   <nav class="page-nav"></nav>
 
@@ -51,14 +58,14 @@
 
     <?php if ($error): ?>
       <p class="error-msg animate__animated animate__fadeInUp">
-        <?= htmlspecialchars($error) ?>
+        <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
       </p>
     <?php endif; ?>
 
   </div>
 
   <footer class="page-footer animate__animated animate__fadeInUp">
-    © 2025 Librarya. All rights reserved.
+    © 2025 Librarya. All Rights Reserved.
   </footer>
 
   <script src="../login/script.js"></script>

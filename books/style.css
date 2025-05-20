@@ -252,3 +252,130 @@ body {
   color: #555;
   margin: 2rem 0;
 }
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: transparent;
+  color: rgba(175,175,175, 0.75);;
+  font-size: 0.9rem;
+  font-family: 'Cinzel Decorative', serif;
+  margin-top: 2rem;
+}
+
+/* ==== Home page user-icon + dropdown styling ==== */
+.user-container {
+  position: relative;
+  right: 40;
+}
+
+.user-icon {
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  z-index: 1000;
+  min-width: 140px;
+}
+
+.user-dropdown.open {
+  display: block;
+}
+
+.user-dropdown .dropdown-item {
+  padding: 0.6rem 1rem;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background: #f0f0f0;
+}
+.user-icon {
+  font-size: 1.9rem !important;                /* down from ~1.8rem */
+}
+
+/* 2. Black, capsule-shaped dropdown */
+.user-dropdown {
+  background-color: #000 !important;
+  border: none !important;                      /* remove the light border */
+  border-radius: 30px !important;               /* full pill shape */
+  min-width: 160px;                              /* adjust as needed */
+  padding: 0.5rem 0 !important;
+  font-family: 'Cinzel Decorative', serif !important;
+  top: 130%;
+}
+
+/* 3. Centered, white text inside each item */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  color: #fff !important;
+  font-size: 1rem;
+  padding: 0.6rem 1rem !important;
+}
+
+/* 4. Hover state (lighter black) */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;              /* dark hover */
+  border-radius: 50px !important;
+}
+
+.nav-right .user-container {  /* increase this value to move it further right */
+  margin-right: 50px;
+}
+
+.user-dropdown .dropdown-item {
+  display: inline-flex !important;          /* inline‐flex for both <div> and <a> */
+  justify-content: center !important;       /* center text horizontally */
+  align-items: center !important;           /* center text vertically */
+  width: auto !important;                   /* shrink to content */
+  margin: 0.25rem auto !important;          /* small vertical gap, horizontally auto‐centered */
+  padding: 0.6rem 1.25rem !important;       /* uniform padding for both */
+  text-align: center !important; 
+  border-radius: 50px !important;            /* ensure text is centered */
+}
+
+/* 1. Make the dropdown container size itself to its content */
+.user-dropdown {
+  width: max-content;          /* shrink‐to‐fit the widest item */
+  min-width: 130px; 
+  height: max-content;           /* or whatever minimum you like */
+}
+
+/* 2. Each item full-width, block, no individual rounding */
+.user-dropdown .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0.6rem 1.25rem !important;
+  text-align: center !important;
+  border-radius: 0 !important;  /* remove per-item rounding */
+}
+
+/* 3. Round only the top and bottom corners of the whole capsule */
+.user-dropdown {
+  border-radius: 20px !important;
+  overflow: hidden;            /* clip items to that radius */
+}
+
+/* 4. Hover state spans full width, clipped by container’s radius */
+.user-dropdown .dropdown-item:hover {
+  background-color: #222 !important;
+}

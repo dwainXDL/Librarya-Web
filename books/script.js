@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('search-input');
   const userIcon    = document.querySelector('.user-icon');
   const userDrop    = document.querySelector('.user-dropdown');
+  const searchContainer = document.querySelector('.search-container');
 
   let booksData = [];
 
@@ -68,6 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  searchContainer.addEventListener('click', e => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener('click', () => {
+    if (searchInput.classList.contains('search-input-expanded')) {
+      // collapse it
+      searchInput.classList.remove('search-input-expanded');
+      searchInput.classList.add('search-input-collapsed');
+      searchInput.value = '';
+      renderBooks(booksData);
+    }
+  });
+
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
     renderBooks(
@@ -84,3 +99,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.addEventListener('click', () => userDrop.classList.remove('open'));
 });
+
+
